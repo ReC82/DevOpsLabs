@@ -3,7 +3,8 @@
 # Initialisation of Vagrantfile
 ```
 vagrant init envimation/ubuntu-xenial
-
+```
+```
 PS E:\Projects\DevOpsLabs\Scripts> vagrant init envimation/ubuntu-xenial
 A `Vagrantfile` has been placed in this directory. You are now   
 ready to `vagrant up` your first virtual environment! Please read
@@ -14,7 +15,8 @@ the comments in the Vagrantfile as well as documentation on
 # Start the VM
 ```
 vagrant up
-
+```
+```
 PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant up      
 Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
