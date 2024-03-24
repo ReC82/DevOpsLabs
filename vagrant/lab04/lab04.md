@@ -44,7 +44,7 @@ Server1
 </p></details>
 
 > [!NOTE]
-> You should see how to create a seconde one, right ?
+> You should see how to create a second one, right ?
 
 <details><summary>Check how here</summary>
 <p>
@@ -84,3 +84,60 @@ end
 > ```
 > vagrant ssh Server1
 > ```
+
+### Create more VM's
+Ok, it works.  But image you have 5 VM to create.
+That starts to become quite hard to maintain.
+If you have to change the IP range for example, you will have to go through each declaration.
+
+> ![NOTE]
+> We are going to do baby steps here.
+> the Vagranfile in this directory contains the whole code
+
+> [!IMPORTANT]
+> The goal here is not to learn Ruby or Programming.
+> There will be link to some explaitions
+
+> [!CAUTION]
+> Don't start this file with the variable set to 10 !
+> Change it to 3 to see how it works.  
+> But keep in mind that it consumes your hosts resources.
+
+### Create a variable to define the numbers of VM
+
+```ruby
+NUM_SERVERS = 10
+```
+
+### Create (Initialize) an array
+
+```
+servers = []
+```
+
+### Loop to fill the array
+```ruby
+num_servers.times do |i|
+  server_name = "Server#{i + 1}"
+  server_ip = "10.0.5.#{i + 10}"  # Starting IP address from 10.0.5.10
+  server_config = {
+    name: server_name,
+    box: "envimation/ubuntu-xenial",
+    ip: server_ip
+  }
+  servers << server_config  # Add server configuration to the array
+end
+```
+
+### Create the VM
+```ruby
+Vagrant.configure("2") do |config|
+  servers.each do |server|
+    config.vm.define server[:name] do |srv|
+      srv.vm.box = server[:box]
+      srv.vm.hostname = server[:name]
+      srv.vm.network "private_network", ip: server[:ip]
+    end
+  end
+end
+```

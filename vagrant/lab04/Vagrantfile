@@ -1,25 +1,27 @@
-# SERVER 1
-HOST1_NAME = "Server1"
-HOST1_BOX = "envimation/ubuntu-xenial"
-HOST2_IP = "10.0.5.10"
+# Define the number of servers
+num_servers = 3
 
-# SERVER 2
-HOST2_NAME = "Server2"
-HOST2_BOX = "envimation/ubuntu-xenial"
-HOST2_IP = "10.0.5.11"
+# Initialize an empty array to store server configurations
+servers = []
+
+# Loop through to create server configurations
+num_servers.times do |i|
+  server_name = "Server#{i + 1}"
+  server_ip = "10.0.5.#{i + 10}"  # Starting IP address from 10.0.5.10
+  server_config = {
+    name: server_name,
+    box: "envimation/ubuntu-xenial",
+    ip: server_ip
+  }
+  servers << server_config  # Add server configuration to the array
+end
 
 Vagrant.configure("2") do |config|
-  # SERVER 1
-  config.vm.define HOST1_NAME do |host1|
-    host1.vm.box = HOST1_BOX
-    host1.vm.hostname = HOST1_NAME
-    host1.vm.network "private_network", ip: HOST1_IP
-  end
-
-  # SERVER 2
-  config.vm.define HOST2_NAME do |host2|
-    host2.vm.box = HOST2_BOX
-    host2.vm.hostname = HOST2_NAME
-    host2.vm.network "private_network", ip: HOST2_IP
+  servers.each do |server|
+    config.vm.define server[:name] do |srv|
+      srv.vm.box = server[:box]
+      srv.vm.hostname = server[:name]
+      srv.vm.network "private_network", ip: server[:ip]
+    end
   end
 end
