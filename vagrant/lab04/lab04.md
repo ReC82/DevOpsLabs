@@ -1,16 +1,16 @@
 # Lab04
 ## Create Multiple VM
-Create a new folder "lab04"
+Create a new folder "**lab04**"
 
 > [!NOTE]
-> Now we will go a bit deeper in the VagrantFile.
-> The programming language of Vagrant is Ruby.
-> Ruby is quite easy to learn but may look confusing at first.
-> A great resource that I like to use : https://github.com/ThibaultJanBeyer/cheatsheets/blob/master/Ruby-Cheatsheet.md
+> Now we will go a bit deeper in the **VagrantFile**.
+> The programming language of Vagrant is **Ruby**.
+> **Ruby** is quite easy to learn but may look confusing at first.
+> A great resource that I use often : https://github.com/ThibaultJanBeyer/cheatsheets/blob/master/Ruby-Cheatsheet.md
 
 ### Create a Vagrantfile
 * First we will create some variables
-<details><summary>show</summary>
+<details><summary>show variables creation</summary>
 <p>
 
 ```ruby
@@ -21,8 +21,8 @@ HOST1_IP = "10.0.5.10"
 ```
 </p></details>
 
-* Create the vm "Server1" based on the variables and try it
-<details><summary>show</summary>
+* Create the VM "**Server1**" based on the variables and try it
+<details><summary>show VM creation</summary>
 <p>
 
 ```ruby
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
-* You can check the hostname with ssh
+* You can check the **hostname** with ssh
 
 ```bash
 vagrant@Server1:~$ hostname
@@ -44,7 +44,7 @@ Server1
 </p></details>
 
 > [!NOTE]
-> You should see how to create a second one, right ?
+> You should see how to create a second one, right ? :wink:
 
 <details><summary>Check how here</summary>
 <p>
@@ -82,32 +82,34 @@ end
 > [!TIP]
 > To connect through SSH now you have to specify the Server
 > ```
-> vagrant ssh Server1
+> vagrant ssh **Server1**
 > ```
 
 ### Create more VM's
-Ok, it works.  But image you have 5 VM to create.
-That starts to become quite hard to maintain.
-If you have to change the IP range for example, you will have to go through each declaration.
+Ok, it works.  But suppose you have 5 VM to create.
+Managing this becomes progressively challenging.
+In the event that you need to modify the IP range, you'll be required to edit each declaration individually.
 
 > ![NOTE]
 > We are going to do baby steps here.
-> the Vagranfile in this directory contains the whole code
+> The **Vagrantfile** in this directory contains the entire code.
 
 > [!IMPORTANT]
-> The goal here is not to learn Ruby or Programming.
-> There will be link to some explaitions
+> The goal here **is not** to learn Ruby or Programming.
+> However, explanations will be accompanied by links.
 
 > [!CAUTION]
-> Don't start this file with the variable set to 10 !
-> Change it to 3 to see how it works.  
-> But keep in mind that it consumes your hosts resources.
+> Avoid setting the variable to 10 initially. 
+> Instead, adjust it to 3 for observation. 
+> However, be aware that this may impact your host's resources.
 
 ### Create a variable to define the numbers of VM
 
 ```ruby
 NUM_SERVERS = 10
 ```
+> ![NOTE]
+> This is not an ordinary variable as it is in uppercase; rather, it is a CONSTANT. Constants are values that remain unchanged throughout the program's execution. In contrast, the variable 'servers' introduced below is mutable and will have its content modified later in the program.
 
 ### Create (Initialize) an array
 
@@ -116,6 +118,9 @@ servers = []
 ```
 
 ### Loop to fill the array
+<details><summary>Check how here</summary>
+<p>
+
 ```ruby
 num_servers.times do |i|
   server_name = "Server#{i + 1}"
@@ -128,8 +133,12 @@ num_servers.times do |i|
   servers << server_config  # Add server configuration to the array
 end
 ```
+</p></details>
 
 ### Create the VM
+<details><summary>Check how here</summary>
+<p>
+
 ```ruby
 Vagrant.configure("2") do |config|
   servers.each do |server|
@@ -141,3 +150,44 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+
+</p></details>
+
+> ![NOTE]
+> You can now attempt to establish connections to each server, verify their hostname, IP, etc. Additionally, verify if they can successfully ping each other.
+
+<details><summary>## FULL Vagrant File</summary>
+<p>
+
+```ruby
+# Define the number of servers
+num_servers = 3
+
+# Initialize an empty array to store server configurations
+servers = []
+
+# Loop through to create server configurations
+num_servers.times do |i|
+  server_name = "Server#{i + 1}"
+  server_ip = "10.0.5.#{i + 10}"  # Starting IP address from 10.0.5.10
+  server_config = {
+    name: server_name,
+    box: "envimation/ubuntu-xenial",
+    ip: server_ip
+  }
+  servers << server_config  # Add server configuration to the array
+end
+
+Vagrant.configure("2") do |config|
+  servers.each do |server|
+    config.vm.define server[:name] do |srv|
+      srv.vm.box = server[:box]
+      srv.vm.hostname = server[:name]
+      srv.vm.network "private_network", ip: server[:ip]
+    end
+  end
+end
+
+```
+
+</p></details>
