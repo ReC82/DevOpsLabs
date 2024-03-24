@@ -25,5 +25,15 @@
 * Learn some Ruby basics
 
 ## Lab05
-### Add more logic and Basic provisionning
+### Create a small project
+* Add some logic with IF
 * Add some hardware limititations
+* Create a webserver and a DB server
+* Make them work together
+
+## Lab06 (current)
+### Let's do things automatically
+* Provision the web server
+* Provision the database
+* inline and path provisionning
+* Environment variables
