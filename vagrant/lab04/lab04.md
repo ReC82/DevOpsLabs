@@ -108,7 +108,8 @@ In the event that you need to modify the IP range, you'll be required to edit ea
 ```ruby
 NUM_SERVERS = 10
 ```
-> ![NOTE]
+
+> [!NOTE]
 > This is not an ordinary variable as it is in uppercase; rather, it is a CONSTANT.
 > Constants are values that remain unchanged throughout the program's execution. 
 > In contrast, the variable 'servers' introduced below is mutable and will have its content modified later in the program.
@@ -155,8 +156,9 @@ end
 
 </p></details>
 
-> ![NOTE]
-> You can now attempt to establish connections to each server, verify their hostname, IP, etc. Additionally, verify if they can successfully ping each other.
+> [!NOTE]
+> You can now attempt to establish connections to each server, verify their hostname, IP, etc.
+> Additionally, verify if they can successfully ping each other.
 
 <details><summary>## FULL Vagrant File</summary>
 <p>
