@@ -109,7 +109,9 @@ In the event that you need to modify the IP range, you'll be required to edit ea
 NUM_SERVERS = 10
 ```
 > ![NOTE]
-> This is not an ordinary variable as it is in uppercase; rather, it is a CONSTANT. Constants are values that remain unchanged throughout the program's execution. In contrast, the variable 'servers' introduced below is mutable and will have its content modified later in the program.
+> This is not an ordinary variable as it is in uppercase; rather, it is a CONSTANT.
+> Constants are values that remain unchanged throughout the program's execution. 
+> In contrast, the variable 'servers' introduced below is mutable and will have its content modified later in the program.
 
 ### Create (Initialize) an array
 
