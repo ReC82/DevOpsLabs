@@ -64,7 +64,7 @@ PS E:\Projects\DevOpsLabs\vagrant\lab02> vagrant destroy --force
 ==> default: Destroying VM and associated drives...
 ```
 * Boot the vm and try to create a file or a folder
-  * You will see that there's a bunch of errors
+  * You will see that there's a bunch of errors when bringing up the VM
 * Check on the host and the guest
 * The file or the folder shouldn't be there
 ```
@@ -88,6 +88,10 @@ PS E:\Projects\DevOpsLabs\vagrant\lab02\shared_folder> ls
 > * That a known issue : https://blog.centos.org/2020/05/updated-centos-vagrant-images-available-v2004-01/
 > * This guy explain it well : https://www.puppeteers.net/blog/fixing-vagrant-vbguest-for-the-centos-7-base-box/
 
+> [!NOTE]
+> By default, when you do ``` vagrant install plugin pluginXXX ```
+> It will look here : https://rubygems.org/search?query=vagrant
+
 > [!CAUTION]
 > For now, I didn't manage to make it work.  I'll come back to this later
 > Below, What I've tried so far.
@@ -96,6 +100,7 @@ PS E:\Projects\DevOpsLabs\vagrant\lab02\shared_folder> ls
 - [x] add: config.vbguest.installer_options = { allow_kernel_upgrade: true }
 - [x] config.vm.box_version = "2004.01"
 - [x] vagrant plugin install vagrant-vbguest
+- [x] vagrant vbguest --do install --no-cleanup
 - [ ] manual installation of vbguest
 
 ```
