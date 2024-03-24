@@ -90,18 +90,18 @@ Ok, it works.  But suppose you have 5 VM to create.
 Managing this becomes progressively challenging.
 In the event that you need to modify the IP range, you'll be required to edit each declaration individually.
 
-> ![NOTE]
-> We are going to do baby steps here.
-> The **Vagrantfile** in this directory contains the entire code.
+> [!NOTE]
+> We are going to take small steps here.
+> The Vagrantfile in this directory contains the entire code.
 
 > [!IMPORTANT]
-> The goal here **is not** to learn Ruby or Programming.
-> However, explanations will be accompanied by links.
+> The aim here is not to learn Ruby or Programming.
+> However, explanations will come with accompanying links.
 
 > [!CAUTION]
-> Avoid setting the variable to 10 initially. 
-> Instead, adjust it to 3 for observation. 
-> However, be aware that this may impact your host's resources.
+> Do not set the variable to 10 initially.
+> Instead, adjust it to 3 for observation.
+> However, please be aware that this may impact your host's resources.
 
 ### Create a variable to define the numbers of VM
 
