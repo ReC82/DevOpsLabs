@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-</p><details>
+</p></details>
 
 ### Start the VM and install some softwares
 
