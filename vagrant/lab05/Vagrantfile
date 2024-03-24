@@ -1,0 +1,40 @@
+# Create a array of hash for 2 servers
+servers = [
+  {
+    :server_hostname => "WEB01",
+    :server_ip => "10.0.5.10",
+    :server_function => "PHP",
+    :server_box => "envimation/ubuntu-xenial"
+  },
+  {
+    :server_hostname => "DATABASE01",
+    :server_ip => "10.0.5.20",
+    :server_function => "MYSQL",
+    :server_box => "ubuntu/focal64"
+  }
+]
+
+Vagrant.configure("2") do |config|
+  servers.each do |server|
+    config.vm.define server[:server_hostname] do |srv|
+      srv.vm.box = server[:server_box]
+      srv.vm.hostname = server[:server_hostname]
+      srv.vm.network "private_network", ip: server[:server_ip]
+      # ADD some logic here
+      # if web then forward port and put some hardware limitation
+      if server[:server_function] == "PHP"
+        srv.vm.network "forwarded_port", guest: 80, host: 8888, id: "http"
+        srv.vm.provider :virtualbox do |vbox|
+          vbox.customize ["modifyvm", :id, "--memory", 512]
+          vbox.customize ["modifyvm", :id, "--cpus", 1]
+        end
+      elsif server[:server_function] == "MYSQL"
+      # If Database then other limitations
+        srv.vm.provider :virtualbox do |vbox|
+          vbox.customize ["modifyvm", :id, "--memory", 1024]
+          vbox.customize ["modifyvm", :id, "--cpus", 1]
+        end
+      end
+    end
+  end
+end
