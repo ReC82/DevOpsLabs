@@ -25,35 +25,78 @@ Bringing machine 'default' up with 'virtualbox' provider...
 ```
 
 # List the boxes on your computer
+```
 vagrant box list
+```
 
 ```
 PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant box list 
-bento/centos-8             (virtualbox, 202112.19.0)
-bento/centos-stream-9      (virtualbox, 202304.28.0)
-bento/ubuntu-20.04         (virtualbox, 202309.09.0)
-bento/ubuntu-22.04         (virtualbox, 202309.08.0)
-centos/7                   (virtualbox, 2004.01)
-centos/8                   (virtualbox, 2011.0)
-debian/bookworm64          (virtualbox, 12.20231211.1)
-debian/bullseye64          (virtualbox, 11.20231211.1)
-debian/jessie64            (virtualbox, 8.11.1)
-envimation/ubuntu-xenial   (virtualbox, 1.0.3-1516241473)
-geerlingguy/centos7        (virtualbox, 1.2.27)
-generic/centos8            (virtualbox, 4.3.2)
-opensuse/Leap-15.2.x86_64  (virtualbox, 15.2.31.632)
-opensuse/Tumbleweed.x86_64 (virtualbox, 1.0.20240111)
-ubuntu/bionic64            (virtualbox, 20230607.0.0)
-ubuntu/focal64             (virtualbox, 20231207.0.0)
-ubuntu/jammy64             (virtualbox, 20240207.0.0)
-ubuntu/trusty64            (virtualbox, 20190514.0.0)
+envimation/ubuntu-xenial (virtualbox, 1.0.3-1516241473)
 ```
 
-# Stop the VM
-vagrant halt
+# Connect to the VM via ssh
+```
+vagrant ssh
+```
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant ssh
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.4.0-109-generic x86_64)
 
-# Destroy the VM [Don't delete the box image]
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+vagrant@base-debootstrap:~$
+```
+
+# Or directly from the VM in VirtualBox
+# Default User : vagrant
+# Default Password : vagrant
+![Screenshot VirtualBox - vagrant user](https://github.com/ReC82/DevOpsLabs/blob/main/vagrant/lab01/images/vbox_screenshot_1.png)
+
+# Stop the VM
+```
+vagrant halt
+```
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant halt
+==> default: Attempting graceful shutdown of VM...
+```
+
+# Destroy the VM with confirmation
+```
 vagrant destroy
+```
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant destroy
+    default: Are you sure you want to destroy the 'default' VM? [y/N] n
+==> default: The VM 'default' will not be destroyed, since the confirmation
+==> default: was declined.
+```
+
+# Destroy the VM without confirmation
+```
+vagrant destroy
+```
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant destroy --force
+==> default: Destroying VM and associated drives...
+```
 
 # Delete the box
-vagrant box remove opensuse/Tumbleweed.x86_64
+```
+vagrant box remove envimation/ubuntu-xenial
+```
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant box remove envimation/ubuntu-xenial
+Removing box 'envimation/ubuntu-xenial' (v1.0.3-1516241473) with provider 'virtualbox'...
+```
+
+# See that the box is not in the list anymore
+```
+vagrant box list
+```
+
+```
+PS E:\Projects\DevOpsLabs\vagrant\lab01> vagrant box list
+There are no installed boxes! Use `vagrant box add` to add some
+```
