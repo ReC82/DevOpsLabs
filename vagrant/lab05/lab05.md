@@ -126,9 +126,9 @@ mysql> quit
 
 > [!TIP]
 > :shushing_face: don't ask ... do it.
-> You want to know more about sed : https://quickref.me/sed.html
-> How to install mysql on Ubuntu : https://ubuntu.com/server/docs/databases-mysql
-> I give you this : https://mariadb.com/kb/en/authentication-plugin-mysql_native_password/
+> * You want to know more about sed : https://quickref.me/sed.html
+> * How to install mysql on Ubuntu : https://ubuntu.com/server/docs/databases-mysql
+> * I give you this : https://mariadb.com/kb/en/authentication-plugin-mysql_native_password/
 > But, seriously, it's completely off topic.
 
 ``` bash
