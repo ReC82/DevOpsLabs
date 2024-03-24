@@ -8,6 +8,11 @@ Create a new folder "**lab05**"
 > But first, we get's our hands dirty :wink:
 
 ### Create an array of hash
+
+> [!NOTE]
+> The difference between hash and array ? here :
+> https://medium.com/@kamalovotash/arrays-and-hashes-in-ruby-29e3476e03da
+
 <details><summary>Create an array of x Servers</summary><p>
 
 ```ruby
