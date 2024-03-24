@@ -83,10 +83,29 @@ PS E:\Projects\DevOpsLabs\vagrant\lab02\shared_folder> ls
 ```
 > [!NOTE]
 > * That's because the vbguest addition plugin is not installed by default on this box.
+> * What is vbguest : https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/guestadd-intro.html
 > * Since the Guest Additions are missing, our images are preconfigured to use rsync for synced folders.
 > * That a known issue : https://blog.centos.org/2020/05/updated-centos-vagrant-images-available-v2004-01/
 > * This guy explain it well : https://www.puppeteers.net/blog/fixing-vagrant-vbguest-for-the-centos-7-base-box/
 
+> [!CAUTION]
+> For now, I didn't manage to make it work.  I'll come back to this later
+> Below, What I've tried so far.
+
+- [x] vagrant plugin install vagrant-vbguest --plugin-version 0.21
+- [x] add: config.vbguest.installer_options = { allow_kernel_upgrade: true }
+- [x] config.vm.box_version = "2004.01"
+- [x] vagrant plugin install vagrant-vbguest
+- [ ] manual installation of vbguest
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.box_version = "2004.01"
+  config.vbguest.installer_options = { allow_kernel_upgrade: true }
+  config.vm.synced_folder "./shared_folder", "/home/vagrant/"
+end
+```
 
 
 
