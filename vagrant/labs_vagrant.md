@@ -24,3 +24,6 @@
 ### Create Multiple VM
 * Learn some Ruby basics
 
+## Lab05
+### Add more logic and Basic provisionning
+* Add some hardware limititations
