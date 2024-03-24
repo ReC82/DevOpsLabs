@@ -174,10 +174,12 @@ servers = []
 num_servers.times do |i|
   server_name = "Server#{i + 1}"
   server_ip = "10.0.5.#{i + 10}"  # Starting IP address from 10.0.5.10
+  server_ssh_port = 2220 + i
   server_config = {
     name: server_name,
     box: "envimation/ubuntu-xenial",
-    ip: server_ip
+    ip: server_ip,
+    ssh_port: server_ssh_port
   }
   servers << server_config  # Add server configuration to the array
 end
