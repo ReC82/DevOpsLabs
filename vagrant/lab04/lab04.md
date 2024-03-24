@@ -9,14 +9,19 @@ Create a new folder "lab04"
 
 ## Create a Vagrantfile
 * First we will create some variables
+<details><summary>show</summary>
+<p>
 ```ruby
 # SERVER 1
 HOST1_NAME = "Server1"
 HOST1_BOX = "envimation/ubuntu-xenial"
-HOST2_IP = "10.0.5.10"
+HOST1_IP = "10.0.5.10"
 ```
+</p></details>
 
-* Create the vm based on the variables
+* Create the vm based on the variables and try it
+<details><summary>show</summary>
+<p>
 ```ruby
 Vagrant.configure("2") do |config|
   # SERVER 1
@@ -27,3 +32,9 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+You can check the hostname with ssh
+```bash
+vagrant@Server1:~$ hostname
+Server1
+```
+</p></details>
