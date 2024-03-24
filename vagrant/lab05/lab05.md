@@ -109,7 +109,7 @@ vagrant@DATABASE01:~$ sudo apt-get install -y mysql-server
 
 > [!WARNING]
 > While it works.  It is not intended to be use in production.
-> I'm really not an expert and it's not my intention :wink:
+> I'm really not an expert and it's not my intention :wink:.
 > The first idea, is to have a working environment to test.
 
 ```bash
@@ -142,7 +142,7 @@ sudo systemctl restart mysql.service
 ### Get PHP/Mysql Website from Github
 > [!NOTE]
 > I've created this mysql/php website for the occasion :wink:
-> https://github.com/ReC82/TinyPhpMysqlExample.git
+> * https://github.com/ReC82/TinyPhpMysqlExample.git
 
 on WEB01 : 
 ```bash
@@ -154,5 +154,5 @@ vagrant@WEB01:/var/www/html$ mysql -h 10.0.5.20 -u vagrant -pvagrant < db.sql
 ```
 
 > [!IMPORTANT]
-> And voilà ! Got to : http://localhost:8888/index.php
+> And voilà ! Got to : * http://localhost:8888/index.php
 
