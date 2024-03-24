@@ -23,7 +23,7 @@ servers = [
 ]
 ```
 
-</p><details>
+</p></details>
 
 ### Create the VM but add a config in a particular case
 
