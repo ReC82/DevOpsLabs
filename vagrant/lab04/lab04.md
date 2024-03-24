@@ -1,4 +1,5 @@
 # Lab04
+## Create Multiple VM
 Create a new folder "lab04"
 
 > [!NOTE]
@@ -7,10 +8,11 @@ Create a new folder "lab04"
 > Ruby is quite easy to learn but may look confusing at first.
 > A great resource that I like to use : https://github.com/ThibaultJanBeyer/cheatsheets/blob/master/Ruby-Cheatsheet.md
 
-## Create a Vagrantfile
+### Create a Vagrantfile
 * First we will create some variables
 <details><summary>show</summary>
 <p>
+
 ```ruby
 # SERVER 1
 HOST1_NAME = "Server1"
@@ -22,6 +24,7 @@ HOST1_IP = "10.0.5.10"
 * Create the vm based on the variables and try it
 <details><summary>show</summary>
 <p>
+
 ```ruby
 Vagrant.configure("2") do |config|
   # SERVER 1
@@ -32,7 +35,8 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
-You can check the hostname with ssh
+* You can check the hostname with ssh
+
 ```bash
 vagrant@Server1:~$ hostname
 Server1
