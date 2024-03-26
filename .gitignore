@@ -1,3 +1,6 @@
+# sensitive
+terraform/lab01/providers.tf
+
 # Local .terraform directories
 **/.terraform/*
 **/.vagrant/
