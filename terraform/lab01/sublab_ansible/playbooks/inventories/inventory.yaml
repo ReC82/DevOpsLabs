@@ -1,0 +1,9 @@
+---
+web-dev:
+  hosts:
+    node_web01:
+      ansible-host: 10.0.1.4
+db-prod:
+  hosts:
+    node_mysql02:
+      ansible-host: 10.0.1.5

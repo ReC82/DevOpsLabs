@@ -1,0 +1,19 @@
+- name: Install Nginx
+  hosts: nic_ansible_node_1
+  become: yes
+  vars:
+    new_mysql_root_password: redacted
+    mysqlsoftware:
+      - mysql-server
+      - mysql-client
+  tasks:
+    - name: "apt-get update"
+      apt:
+        update-cache: yes
+        cache_valid_time: 300
+    - name: "install mysql SERVER"
+      shell: apt-get -y install mysql-server
+    - name: "install mysql CLIENT"
+      shell: apt-get -y install mysql-client
+    - name: "Start MYSQL service"
+      action: service name=mysql state=started     

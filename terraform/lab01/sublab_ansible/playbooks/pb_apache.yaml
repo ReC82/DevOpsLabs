@@ -1,0 +1,26 @@
+- name: Install Apache
+  hosts: web
+  become: yes
+  tasks:
+    - name: "install Apache"
+      apt:
+        name: apache2
+        update-cache: yes
+        state: latest
+    - name: "Create root www directory with permissions"
+      file:
+        path: "/var/www"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '8755'
+    - name: "Update Firewall to allow Http"
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+  handlers:
+    - name: restart-apache
+      service:
+        name: apache2
+        state: restarted

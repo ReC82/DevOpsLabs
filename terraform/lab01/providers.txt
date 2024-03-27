@@ -1,0 +1,10 @@
+provider "azurerm" {
+  features {
+
+  }
+
+  subscription_id = "to_fill"
+  tenant_id       = "to_fill"
+  client_id       = "to_fill"
+  client_secret   = "to_fill"
+}
